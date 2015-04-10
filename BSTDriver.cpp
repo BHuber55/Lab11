@@ -40,11 +40,9 @@ int main()
       bst->insert(cd);
    }
    delete iter;
-
    
    //DO THIS
    //test your tree sort method
-
 
    int num_itemss = cds->size();		//num_itemss again.. gf spelling.
 
@@ -58,7 +56,7 @@ int main()
 	   cout << endl;
    }
 
-   cout << "leggo.. (hit enter)";
+   cout << "(hit enter)";
    cin.get();
    cout << endl << endl;
 

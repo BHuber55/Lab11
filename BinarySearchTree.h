@@ -126,9 +126,7 @@ TreeNode<T>* BinarySearchTree<T>::removeNode(TreeNode<T>* tNode)
    else 
    {
       //DO THIS
-		cout << "Test before\n";
 	   T* left_most = findLeftMost(tNode->getRight()); //mark
-	   cout << "Test after\n";
 	   tNode->setItem(left_most);
 
 	   TreeNode<T>* branch = removeLeftMost(tNode->getRight());
@@ -141,7 +139,6 @@ TreeNode<T>* BinarySearchTree<T>::removeNode(TreeNode<T>* tNode)
 template < class T >
 T* BinarySearchTree<T>::findLeftMost(TreeNode<T>* tNode)
 {
-	cout << "Yep\n";
    //DO THIS (use a while loop)
 	while (tNode->getLeft() != NULL)
 	{
