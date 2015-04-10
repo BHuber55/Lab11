@@ -46,7 +46,7 @@ int main()
 
    int num_itemss = cds->size();		//num_itemss again.. gf spelling.
 
-   //CD** unsorted_cds = cds->toArray();
+   CD** unsorted_cds = cds->toArray();
    CD** sorted_cds = BinarySearchTree<CD>::treeSort(cds->toArray(), cds->size(), &CD::compare_items, &CD::compare_keys);
    for (int i = 0; i < num_itemss; i++)
    {
