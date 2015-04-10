@@ -8,6 +8,9 @@
 #include "Drawable.h"
 using CSC2110::String;
 
+#include <iostream>
+using namespace std;
+
 template < class T >
 class BinarySearchTree : public Drawable
 {
@@ -61,12 +64,10 @@ template < class T >
 void BinarySearchTree<T>::remove(String* sk)
 {
    //DO THIS
-	if (root == NULL)
+	if (root != NULL)
 	{
-		return;
+		root = removeItem(root, sk);
 	}
-
-	root = removeItem(root, sk);
 }
 
 template < class T >
@@ -84,8 +85,8 @@ TreeNode<T>* BinarySearchTree<T>::removeItem(TreeNode<T>* tNode, String* sk)
 
 	if (compare == 0)
 	{
+		tNode = removeNode(tNode);
 		sze--;
-		return removeNode(tNode);
 	}
 	else if (compare < 0)		
 	{
@@ -125,8 +126,9 @@ TreeNode<T>* BinarySearchTree<T>::removeNode(TreeNode<T>* tNode)
    else 
    {
       //DO THIS
-		
-	   T* left_most = findLeftMost(tNode->getLeft());
+		cout << "Test before\n";
+	   T* left_most = findLeftMost(tNode->getRight()); //mark
+	   cout << "Test after\n";
 	   tNode->setItem(left_most);
 
 	   TreeNode<T>* branch = removeLeftMost(tNode->getRight());
@@ -139,17 +141,14 @@ TreeNode<T>* BinarySearchTree<T>::removeNode(TreeNode<T>* tNode)
 template < class T >
 T* BinarySearchTree<T>::findLeftMost(TreeNode<T>* tNode)
 {
+	cout << "Yep\n";
    //DO THIS (use a while loop)
-	if (root == tNode)
-	{
-		tNode = tNode->getRight();
-	}
 	while (tNode->getLeft() != NULL)
 	{
-		tNode->setLeft(tNode->getLeft());
+		tNode = tNode -> getLeft();
 	}
 
-	return tNode;
+	return tNode -> getItem();
 }
 
 template < class T >
@@ -175,7 +174,7 @@ T** BinarySearchTree<T>::toArray()
 {
    //DO THIS
 	BinaryTreeIterator<T>* iter = iterator();
-	iter->setInoder();
+	iter->setInorder();
 
 	T** new_array = new T*[sze];
 
