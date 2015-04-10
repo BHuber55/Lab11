@@ -64,14 +64,7 @@ int main()
    cin.get();
    cout << endl << endl;
 
-
-
-
-
-
-
-
-
+   
    deleteCDs(cds);
    delete cds;
    return 0;
