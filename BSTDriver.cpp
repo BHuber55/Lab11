@@ -28,8 +28,7 @@ int main()
    //the unsorted ListArray of cds
    ListArray<CD>* cds = CD::readCDs("cds.txt");
    int num_items = cds->size();
-   cout << num_items << endl;
-   cout << endl;
+   cout << num_items << endl << endl;
 
    //test the binary search tree
    //insert all of the cds
@@ -51,7 +50,7 @@ int main()
 
    int num_itemss = cds->size();		//num_itemss again.. gf spelling.
 
-   CD** unsorted_cds = cds->toArray();
+   //CD** unsorted_cds = cds->toArray();
    CD** sorted_cds = BinarySearchTree<CD>::treeSort(cds->toArray(), cds->size(), &CD::compare_items, &compare_keys);
    for (int i = 0; i < num_itemss; i++)
    {
@@ -64,7 +63,46 @@ int main()
    cin.get();
    cout << endl << endl;
 
-   
+   //tests insert
+   iter = cds->iterator();
+   int count = 1;
+   while (iter->hasNext())
+   {
+	   CD* cd = iter->next();
+	   bst->insert(cd);
+   }
+   delete iter;
+
+   //tests remove
+   iter = cds->iterator();
+   count = 1;
+   while (iter->hasNext() && count <= num_itemss)	//make sure it doesnt remove more 
+   {
+	   CD* cd = iter->next();
+	   bst->remove(cd->getKey());
+	   count++;
+   }
+   delete iter;
+
+   BinaryTreeIterator<CD>* bst_iter = bst->iterator();
+   bst_iter->setInorder();
+   while (bst_iter->hasNext())
+   {
+	   CD* cd = bst_iter->next();
+	   cd->displayCD();
+   }
+   delete bst_iter;
+
+   iter = cds->iterator();
+   bst = new BinarySearchTree<CD>(&CD::compare_item, &CD::compare_key);
+
+   while (iter->hasNext())
+   {
+	   CD* cd = iter->next();
+	   bst->insert(cd);
+   }
+   delete iter;
+
    deleteCDs(cds);
    delete cds;
    return 0;
