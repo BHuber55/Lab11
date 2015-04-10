@@ -45,8 +45,24 @@ int main()
    
    //DO THIS
    //test your tree sort method
+
+   String file_name("cds.txt");
+   ListArray<CD>* cds = CD::readCDs(&file_name);
+
+   int num_itemss = cds->size();		//num_itemss again.. gf spelling.
+
    CD** unsorted_cds = cds->toArray();
-   CD** sorted_cds = 
+   CD** sorted_cds = BinarySearchTree<CD>::treeSort(cds->toArray(), cds->size(), &CD::compare_items, &compare_keys);
+   for (int i = 0; i < num_itemss; i++)
+   {
+	   CD* cd = sorted_cds[i];
+	   String* title = cd->getKey();
+	   title->displayString();
+   }
+
+   cout << "leggo.. (hit enter)";
+   cin.get();
+   cout << endl << endl;
 
 
 

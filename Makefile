@@ -1,8 +1,8 @@
 AutomatedMakefile = am
 CC = g++
 
-FILES = 
-EXECUTABLE = 
+FILES = BSTDriver.cpp
+EXECUTABLE = BSTDriver.exe
 
 PROJECT_PATH = $(PROJECT_DIR)
 GTK_PATH = /$(DRIVE_LETTER)/MinGW/GTK
@@ -21,5 +21,6 @@ all: Lab11
 Lab11: 		$(FILES)
 		$(LINK) $(EXECUTABLE) $(FILES) $(LIBS)
 	
-
+BSTDriver.cpp:	BSTDriver.cpp
+						$(COMPILE) BSTDriver.cpp
 
